@@ -1,0 +1,7 @@
+.idea/
+bin/
+!/premake/bin
+bin-int/
+
+*.vcxproj*
+*.sln
