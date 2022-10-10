@@ -1,4 +1,4 @@
-project "03_MultiThread"
+project "34_Input"
     kind "ConsoleApp"
     language "C++"
     cppdialect "C++14"
@@ -9,7 +9,7 @@ project "03_MultiThread"
 
     files
     {
-       "%{Examples_3}/Unit_Tests/src/%{prj.name}/*.*",
+       "%{Examples_3}/Unit_Tests/src/%{prj.name}/%{prj.name}.cpp",
     }
 
     defines
@@ -33,19 +33,14 @@ project "03_MultiThread"
     fsl_out_dir "$(OutDir)/Shaders"
     fsl_binary_out_dir "$(OutDir)/CompiledShaders"
     fsl_compile "true"
-    fsl_language "VULKAN DIRECT3D12"
+    fsl_language "VULKAN DIRECT3D12 DIRECT3D11"
 
     fsl_includes
     {
-        '$(SolutionDir)/The-Forge/Examples_3/Unit_Tests/src/03_MultiThread/Shaders/FSL/Graph.frag.fsl',
-        '$(SolutionDir)/The-Forge/Examples_3/Unit_Tests/src/03_MultiThread/Shaders/FSL/Graph.vert.fsl',
-        '$(SolutionDir)/The-Forge/Examples_3/Unit_Tests/src/03_MultiThread/Shaders/FSL/Particle.frag.fsl',
-        '$(SolutionDir)/The-Forge/Examples_3/Unit_Tests/src/03_MultiThread/Shaders/FSL/Particle.vert.fsl',
-        '$(SolutionDir)/The-Forge/Examples_3/Unit_Tests/src/03_MultiThread/Shaders/FSL/ShaderList.fsl',
-        '$(SolutionDir)/The-Forge/Examples_3/Unit_Tests/src/03_MultiThread/Shaders/FSL/Skybox.frag.fsl',
-        '$(SolutionDir)/The-Forge/Examples_3/Unit_Tests/src/03_MultiThread/Shaders/FSL/Skybox.vert.fsl',
-        '$(SolutionDir)/The-Forge/Examples_3/Unit_Tests/src/04_ExecuteIndirect/Shaders/FSL/shaderDefs.h.fsl',
-
+        '$(SolutionDir)/The-Forge/Examples_3/Unit_Tests/src/34_Input/Shaders/FSL/basic.frag.fsl',
+        '$(SolutionDir)/The-Forge/Examples_3/Unit_Tests/src/34_Input/Shaders/FSL/basic.vert.fsl',
+        '$(SolutionDir)/The-Forge/Examples_3/Unit_Tests/src/34_Input/Shaders/FSL/ShaderList.fsl',
+        
         '$(SolutionDir)/The-Forge/Common_3/Application/UI/Shaders/FSL/imgui.frag.fsl',
         '$(SolutionDir)/The-Forge/Common_3/Application/UI/Shaders/FSL/imgui.vert.fsl',
         '$(SolutionDir)/The-Forge/Common_3/Application/UI/Shaders/FSL/textured_mesh.frag.fsl',
@@ -62,10 +57,17 @@ project "03_MultiThread"
     
     postbuildcommands
     {
-        '{COPYFILE} "%{Common_3}/OS/ThirdParty/OpenSource/winpixeventruntime/bin/WinPixEventRuntime.dll" %{cfg.targetdir}',
-        '{COPYFILE} "%{Common_3}/Graphics/ThirdParty/OpenSource/ags/ags_lib/lib/amd_ags_x64.dll" %{cfg.targetdir}',
-        '{COPYDIR}  "%{Examples_3}/Unit_Tests/UnitTestResources" %{cfg.targetdir}',
-        '{COPYDIR}  "%{Examples_3}/Unit_Tests/src/%{prj.name}/Shaders" %{cfg.targetdir}/Shaders',
+        '{COPYDIR}  "%{Examples_3}/Unit_Tests/UnitTestResources/Textures/input" "%{cfg.targetdir}/Textures"',
+        '{COPYDIR}  "%{Examples_3}/Unit_Tests/UnitTestResources/Fonts" "%{cfg.targetdir}/Fonts"',
+        
+        '{COPYDIR}  "%{Common_3}/OS/Shaders" "%{cfg.targetdir}/Shaders"',
+        '{COPYDIR}  "%{Common_3}/OS/CompiledShaders" "%{cfg.targetdir}/CompiledShaders"',
+        
+        '{COPYDIR}  "%{Examples_3}/Unit_Tests/UnitTestResources/GPUCfg" "%{cfg.targetdir}/GPUCfg"',
+        '{COPYDIR}  "%{Examples_3}/Unit_Tests/UnitTestResources/Scripts" "%{cfg.targetdir}/Scripts"',
+        
+        '{COPYFILE} "%{Common_3}/OS/ThirdParty/OpenSource/winpixeventruntime/bin/WinPixEventRuntime.dll" "%{cfg.targetdir}"',
+        '{COPYFILE} "%{Common_3}/Graphics/ThirdParty/OpenSource/ags/ags_lib/lib/amd_ags_x64.dll" "%{cfg.targetdir}"',
     }
     
     filter "system:windows"
@@ -73,7 +75,7 @@ project "03_MultiThread"
         systemversion "10.0.17763.0"
         buildoptions
         {
-            "/Zc:wchar_t"
+            "/Zc:wchar_t",
         }
     
     filter "configurations:Debug"

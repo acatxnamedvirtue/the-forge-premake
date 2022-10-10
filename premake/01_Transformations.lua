@@ -9,18 +9,18 @@ project "01_Transformations"
 
     files
     {
-       "%{Examples_3}/Unit_Tests/src/01_Transformations/*.*"
+       "%{Examples_3}/Unit_Tests/src/%{prj.name}/*",
     }
 
     defines
     {
         "_CRT_SECURE_NO_WARNINGS",
-        "_ITERATOR_DEBUG_LEVEL=1"
+        "_ITERATOR_DEBUG_LEVEL=1",
     }
 
     includedirs
     {
-        "%{VULKAN_SDK}/Include"
+        "%{VULKAN_SDK}/Include",
     }
 
     links
@@ -61,10 +61,10 @@ project "01_Transformations"
     
     postbuildcommands
     {
-        '{COPYFILE} "%{wks.location}/The-Forge/Common_3/OS/ThirdParty/OpenSource/winpixeventruntime/bin/WinPixEventRuntime.dll" %{cfg.targetdir}',
-        '{COPYFILE} "%{wks.location}/The-Forge/Common_3/Graphics/ThirdParty/OpenSource/ags/ags_lib/lib/amd_ags_x64.dll" %{cfg.targetdir}',
-        '{COPYDIR} "%{wks.location}/The-Forge/Examples_3/Unit_Tests/UnitTestResources" %{cfg.targetdir}',
-        '{COPYDIR} "%{wks.location}/The-Forge/Examples_3/Unit_Tests/src/01_Transformations/Shaders" %{cfg.targetdir}/Shaders'
+        '{COPYFILE} "%{Common_3}/OS/ThirdParty/OpenSource/winpixeventruntime/bin/WinPixEventRuntime.dll" %{cfg.targetdir}',
+        '{COPYFILE} "%{Common_3}/Graphics/ThirdParty/OpenSource/ags/ags_lib/lib/amd_ags_x64.dll" %{cfg.targetdir}',
+        '{COPYDIR}  "%{Examples_3}/Unit_Tests/UnitTestResources" %{cfg.targetdir}',
+        '{COPYDIR}  "%{Examples_3}/Unit_Tests/src/%{prj.name}/Shaders" %{cfg.targetdir}/Shaders'
     }
     
     filter "system:windows"
