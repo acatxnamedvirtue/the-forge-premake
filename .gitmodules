@@ -1,3 +1,6 @@
 [submodule "The-Forge"]
 	path = The-Forge
 	url = https://github.com/ConfettiFX/The-Forge.git
+[submodule "Custom-Middleware"]
+	path = Custom-Middleware
+	url = https://github.com/ConfettiFX/Custom-Middleware.git
