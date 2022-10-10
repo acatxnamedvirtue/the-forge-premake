@@ -70,9 +70,8 @@ project "01_Transformations"
     }
     
     filter "system:windows"
-        toolset "v141"
-        systemversion "10.0.17763.0"
-        location "PC Visual Studio 2017"
+        systemversion "latest"
+        location "PC Visual Studio 2022"
     
     filter "configurations:Debug"
         runtime "Debug"

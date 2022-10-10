@@ -21,12 +21,14 @@ premake or cmake based build system, I hope that this helps!
 
 Make sure the VULKAN_SDK environment variable is set to the SDK location. The installer should handle this for you.
 
+While [The-Forge's README](https://github.com/ConfettiFX/The-Forge#pc-windows-requirements) recommends these versions of the Windows SDK and toolset, I have found that most of the codebase supports higher versions. Feel free to experiment, but if you run into issues, try using the versions listed above.
+
 ## Build steps
 
 1. Clone this repo `git clone https://github.com/acatxnamedvirtue/the-forge-premake.git`
 2. Update the submodule to pull in the source for The-Forge and Custom-Middleware `git init && git submodule update`
 3. Run `The-Forge/PRE_BUILD.bat` to download assets needed for the examples
-4. Run `GenVS.bat` to use the vendored premake5 exe, or run `premake5 vs2017` from your terminal
+4. Run `GenVS.bat` to use the vendored premake5 exe, or run `premake5 vs2022` from your terminal
 5. Open `The-Forge-Premake.sln` in VS or Rider, then build and run any of the Examples
 
 ###
